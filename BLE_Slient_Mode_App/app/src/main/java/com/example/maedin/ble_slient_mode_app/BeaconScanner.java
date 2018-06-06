@@ -38,40 +38,7 @@ public class BeaconScanner extends Application {
                         4660, 64002));
             }
         });
-
-        //연결-해제 확인 및 알림
-        beaconManager.setMonitoringListener(new BeaconManager.BeaconMonitoringListener() {
-            @Override
-            public void onEnteredRegion(BeaconRegion region, List<Beacon> beacons) {
-                showNotification(
-                        "Arduino",
-                        "비콘이 연결되었습니다!");
-            }
-            @Override
-            public void onExitedRegion(BeaconRegion region) {
-                showNotification(
-                        "Arduino",
-                        "비콘 연결이 해제되었습니다!");
-            }
-        });
     }
 
-    //알림에 사용되는 함수
-    public void showNotification(String title, String message) {
-        Intent notifyIntent = new Intent(this, MainActivity.class);
-        notifyIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivities(this, 0,
-                new Intent[] { notifyIntent }, PendingIntent.FLAG_UPDATE_CURRENT);
-        Notification notification = new Notification.Builder(this)
-                .setSmallIcon(android.R.drawable.ic_dialog_info)
-                .setContentTitle(title)
-                .setContentText(message)
-                .setAutoCancel(true)
-                .setContentIntent(pendingIntent)
-                .build();
-        notification.defaults |= Notification.DEFAULT_SOUND;
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(1, notification);
-    }
+
 }

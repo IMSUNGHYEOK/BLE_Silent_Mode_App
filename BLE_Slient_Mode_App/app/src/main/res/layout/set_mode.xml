@@ -3,27 +3,27 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="복구 기능을 설정합니다."/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="모드 설정"
-        android:textSize="15pt"
-        android:layout_marginTop="20dp"/>
+        android:text="ON으로 설정시 원래 모드로 돌아갑니다."/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="매너모드 복구 설정 유/무"/>
-
-
-        <Switch
+    <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="모드 복구 설정 ON/OFF"
+            android:text="복구 기능 ON/OFF   "
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:id="@+id/btn_switch"/>
 
 
