@@ -1,8 +1,11 @@
 package com.example.maedin.ble_slient_mode_app;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.AudioManager;
+import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn_exit;        //종료 버튼
     private TextView txt_data;
 
+    private Button btn_switch_info;
+    boolean switch_info;
+
     private TextView txt_on_off;    //변경 확인 임시 위젯
     private TextView txt_rssi;      //rssi확인 임시 위젯
 
@@ -39,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     boolean isConnected = false;   //false 변경X true 변경
 
     AudioManager mAudiomanger;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         region = new BeaconRegion("ranged region",
                 UUID.fromString("74278BDA-B644-4520-8F0C-720EAF059935"), null, null);
 
-        mAudiomanger = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        mAudiomanger = (AudioManager)getSystemService(getApplicationContext().AUDIO_SERVICE);
     }
 
     @Override
@@ -143,6 +148,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      private void setModeDialog()
      {
          final LinearLayout set_mode_layout = (LinearLayout) View.inflate(this, R.layout.set_mode, null);
+         btn_switch_info = (Button) set_mode_layout.findViewById(R.id.btn_switch);
 
          AlertDialog.Builder dlg = new AlertDialog.Builder(this);
          dlg.setTitle("모드 설정");
@@ -152,6 +158,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          dlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
              @Override
              public void onClick(DialogInterface dialog, int which) {
+                  switch_info = btn_switch_info.isSelected();
                  //수정할 부분
                  //설정 시 모드 변환 코드 추가
              }
@@ -185,6 +192,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
      private void chagneState()
      {
+         final LinearLayout set_mode_layout = (LinearLayout) View.inflate(this, R.layout.setting, null);
+         btn_switch_info = (Button) set_mode_layout.findViewById(R.id.btn_switch);
          beaconManager.setRangingListener(new BeaconManager.BeaconRangingListener()
          {
              @Override
@@ -199,16 +208,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                      {
                          txt_on_off.setText("ON");
                          isConnected = true;
+                         soundstate = mAudiomanger.getRingerMode();
                          mAudiomanger.setRingerMode(AudioManager.RINGER_MODE_VIBRATE); // RINGER_MODE_VIBRATE = 1
-                        sound_mode_check();
+                         sound_mode_check();
 
                      }
                      else if (nearestBeacon.getRssi() > -70 && isConnected) //앱이 작동된 상태로 비콘감지
                      {
                          txt_on_off.setText("OFF");
                          isConnected = false;
-                         mAudiomanger.setRingerMode(AudioManager.RINGER_MODE_NORMAL); // RINGER_MODE_VIBRATE= 2
+                         if(switch_info)
+                         {
+                         mAudiomanger.setRingerMode(soundstate);
                          sound_mode_check();
+                         }else if(soundstate==0){
+                             mAudiomanger.setRingerMode(AudioManager.RINGER_MODE_VIBRATE); // RINGER_MODE_NORMAL= 2
+                         }
                      }
 
                  }

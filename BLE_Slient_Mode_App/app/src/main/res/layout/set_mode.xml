@@ -15,35 +15,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="강의실 진입시 전환될 모드를 선택해주세요."/>
+        android:text="매너모드 복구 설정 유/무"/>
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp">
 
-        <RadioButton
+        <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="무음 모드"
+            android:text="모드 복구 설정 ON/OFF"
+            android:layout_gravity="center"
             android:layout_marginTop="5dp"
-            android:id="@+id/radio_slient"/>
+            android:id="@+id/btn_switch"/>
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="진동 모드"
-            android:layout_marginTop="5dp"
-            android:id="@+id/radio_vibration"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="변경 없음"
-            android:layout_marginTop="5dp"
-            android:id="@+id/radio_no"/>
-
-    </RadioGroup>
 
 </LinearLayout>
