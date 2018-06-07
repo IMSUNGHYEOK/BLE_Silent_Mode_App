@@ -18,7 +18,8 @@ Beacon Setup
 ---------------------------------------------------------------------------------------------------------------------------------
 >1. Arduino + HM-10 모듈 연결  
 >2. Arduino 프로그래밍.  
->
+~~~
+<div>
 #include <SoftwareSerial.h>
 
 SoftwareSerial BTSerial(4, 5); // 소프트웨어 시리얼 (TX,RX)
@@ -41,35 +42,41 @@ void loop(){
     BTSerial.write(data);
   }
 }
-
+<div>
+~~~
 reference : ibeaconCode/ibeaconCode.ino
 
 Usage of iBeacon
 ---------------------------------------------------------------------------------------------------------------------------------
 >1. AT+RENEW : 공장 초기화  
-2. AT+RESET : HM-10 리붓  
-3. AT ß 시험 작동  
-4. AT+MARJ0x1234 : iBeacon의 Major number설정 (0x1234는 임의값 설정 가능)  
-5. AT+MINO0xFA02 : iBeacon의 Minor number설정 (0xFA02는 임의값 설정 가능)  
-6. AT+ADVI5 : advertising(신호 송출) 주기를 5로 설정(약 0.5초)  
-7. AT+NAMEBBANGPAN : HM-10 이름 정의 (BBANGPAN은 임의값 정의 가능)  
-8. AT+ADTY3 : 전원 절약을 위해 맺지않음(non-connectable)모드로 설정  
-9. AT+IBEA1 : iBeacon을 활성화  
-10. AT+DELO2 : iBeacon의 broadcast-only 로 설정  
-11. AT+PWRM0 : 전원 절약을 위해 auto-sleep으로 설정(최소 절전 모드)  
-12. AT+RESET : 리부트하여 반영  
+>2. AT+RESET : HM-10 리붓  
+>3. AT ß 시험 작동  
+>4. AT+MARJ0x1234 : iBeacon의 Major number설정 (0x1234는 임의값 설정 가능)  
+>5. AT+MINO0xFA02 : iBeacon의 Minor number설정 (0xFA02는 임의값 설정 가능)  
+>6. AT+ADVI5 : advertising(신호 송출) 주기를 5로 설정(약 0.5초)  
+>7. AT+NAMEBBANGPAN : HM-10 이름 정의 (BBANGPAN은 임의값 정의 가능)  
+>8. AT+ADTY3 : 전원 절약을 위해 맺지않음(non-connectable)모드로 설정  
+>9. AT+IBEA1 : iBeacon을 활성화  
+>10. AT+DELO2 : iBeacon의 broadcast-only 로 설정  
+>11. AT+PWRM0 : 전원 절약을 위해 auto-sleep으로 설정(최소 절전 모드)  
+>12. AT+RESET : 리부트하여 반영  
 
 Application Project Setup
 ---------------------------------------------------------------------------------------------------------------------------------
 >1. 프로젝트 Clone.  
-2. Android Studio에 기존 프로젝트로 불러오기.  
-3. AndroidManifest.xml에 다음 권한을 추가.  
+>2. Android Studio에 기존 프로젝트로 불러오기.  
+>3. AndroidManifest.xml에 다음 권한을 추가.  
+~~~
+<div>
 ...
 </application>
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
 </manifest>
-
-4. build.gradle (Module: app)에 다음 sdk version 설정
+</div>
+~~~
+>4. build.gradle (Module: app)에 다음 sdk version 설정
+~~~
+<div>
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -81,18 +88,19 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     ...
-
-5. 모바일 기기에 컴파일 및 어플리케이션 설치/실행  
+</div>
+~~~
+>5. 모바일 기기에 컴파일 및 어플리케이션 설치/실행  
 
 Usage of Application
 ---------------------------------------------------------------------------------------------------------------------------------
 >1. 어플리케이션 실행.  
-2. 블루투스 권한 설정.  
-3. 설정 다이얼로그  
-- 복구 기능 설정  
-ON : 비콘 영역에서 벗어날 경우 매너모드 전환 이전 모드로 다시 변경.  
-OFF : 비콘 영역에서 벗어나더라도 매너모드 유지  
-- 비콘 정보 확인  
-블루투스 신호를 보내준 비콘의 정보를 출력.  
-- 종료  
-어플리케이션 종료.   
+>2. 블루투스 권한 설정.  
+>3. 설정 다이얼로그  
+>- 복구 기능 설정  
+>ON : 비콘 영역에서 벗어날 경우 매너모드 전환 이전 모드로 다시 변경.  
+>OFF : 비콘 영역에서 벗어나더라도 매너모드 유지  
+>- 비콘 정보 확인  
+>블루투스 신호를 보내준 비콘의 정보를 출력.  
+>- 종료  
+>어플리케이션 종료.   
