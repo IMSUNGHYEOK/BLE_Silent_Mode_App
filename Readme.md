@@ -20,8 +20,7 @@ Beacon Setup
 <img width="280" alt="arduino" src="https://user-images.githubusercontent.com/37177670/41099310-19d17a98-6a99-11e8-8b62-c9d0dfd3208e.png">  
 
 >2. Arduino 프로그래밍.  
-~~~
-<div>
+~~~  
 #include <SoftwareSerial.h>
 
 SoftwareSerial BTSerial(4, 5); // 소프트웨어 시리얼 (TX,RX)
@@ -44,7 +43,7 @@ void loop(){
     BTSerial.write(data);
   }
 }
-<div>
+  
 ~~~
 reference : ibeaconCode/ibeaconCode.ino
 
@@ -77,8 +76,8 @@ Application Project Setup
 </div>
 ~~~
 >4. build.gradle (Module: app)에 다음 sdk version 설정
-~~~
-<div>
+~~~  
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -89,8 +88,8 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    ...
-</div>
+    ...  
+
 ~~~
 >5. 모바일 기기에 컴파일 및 어플리케이션 설치/실행  
 
