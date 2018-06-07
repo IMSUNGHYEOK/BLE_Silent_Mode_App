@@ -10,7 +10,7 @@ Service introduce
 Supported Platforms
 ---------------------------------------------------------------------------------------------------------------------------------
 >라이브러리 : Android Oreo 8.1 (SDK version 27).  
-모바일 기기 : Bluetooth 4.0 (BLE)를 지원하는 기기, Android 4.3 이상.
+모바일 기기 : Bluetooth 4.0 (BLE)를 지원하는 기기, Android 4.3 이상.  
 비콘 정보 : Arduino Uno + HM-10 모듈  
 
 
