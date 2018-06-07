@@ -17,7 +17,8 @@ Supported Platforms
 Beacon Setup
 ---------------------------------------------------------------------------------------------------------------------------------
 >1. Arduino + HM-10 모듈 연결
-<img width="280" alt="arduino" src="https://user-images.githubusercontent.com/37177670/41099310-19d17a98-6a99-11e8-8b62-c9d0dfd3208e.png">
+<img width="280" alt="arduino" src="https://user-images.githubusercontent.com/37177670/41099310-19d17a98-6a99-11e8-8b62-c9d0dfd3208e.png">  
+
 >2. Arduino 프로그래밍.  
 ~~~
 <div>
