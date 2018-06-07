@@ -17,8 +17,8 @@ Supported Platforms
 Beacon Setup
 ---------------------------------------------------------------------------------------------------------------------------------
 >1. Arduino + HM-10 모듈 연결  
-2. Arduino 프로그래밍.  
-
+>2. Arduino 프로그래밍.  
+>
 #include <SoftwareSerial.h>
 
 SoftwareSerial BTSerial(4, 5); // 소프트웨어 시리얼 (TX,RX)
